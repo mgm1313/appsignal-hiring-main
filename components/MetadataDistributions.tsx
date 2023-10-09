@@ -114,8 +114,8 @@ function Bar({
 
                 return (
                     <BarSegment
-                        key={key}
                         className={bgColor}
+                        key={key}
                         label={key}
                         target={target}
                         total={total}
@@ -127,7 +127,6 @@ function Bar({
             {/* If there is only a 10th segment, we can add it just like a regular segment. */}
             {restDistribution.length === 1 ? (
                 <BarSegment
-                    key={restDistribution[0].key}
                     className={colorGroup[9]}
                     label={restDistribution[0].key}
                     target={target}
