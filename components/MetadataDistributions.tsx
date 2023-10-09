@@ -1,6 +1,5 @@
 import Tooltip, { useSingleton } from '@/components/Tooltip'
 import Link from 'next/link'
-import { Fragment, useRef } from 'react'
 import { DataFromApi } from 'types/data'
 
 const colors = [

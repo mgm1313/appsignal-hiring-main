@@ -6,7 +6,7 @@ describe('MetadataDistributions', () => {
     const build = (props) => {
         return render(
             <MetadataDistributions
-                distributions={dataFromGraphql.app.metadataDistributions}
+                distributions={dataFromGraphql.app}
                 {...props}
             />
         )
