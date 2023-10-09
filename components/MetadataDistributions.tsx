@@ -43,14 +43,12 @@ const colors = [
 ]
 
 function BarSegment({
-    type,
     className,
     label,
     value,
     total,
     target,
 }: {
-    type: 'regular' | 'other'
     className?: string
     label: string
     value: number
@@ -67,23 +65,18 @@ function BarSegment({
             content={`${label} (${fractionFormatter.format(value / total)})`}
             singleton={target}
         >
-            {type === 'regular' ? (
-                <Link
-                    href="#"
-                    style={{
-                        ['--segment-value' as string]: value,
-                    }}
-                    className={clsx(
-                        className,
-                        'h-full flex-none w-[calc(100%*(var(--segment-value)/var(--total-distribution-width)))]'
-                    )}
-                >
-                    <span className="sr-only">{`${label}: ${value}`}</span>
-                </Link>
-            ) : (
-                // Use flex-1 to fill the remaining space
-                <div className={clsx(className, 'h-full flex-1')} />
-            )}
+            <Link
+                href="#"
+                style={{
+                    ['--segment-value' as string]: value,
+                }}
+                className={clsx(
+                    className,
+                    'h-full w-[calc(100%*(var(--segment-value)/var(--total-distribution-width)))]'
+                )}
+            >
+                <span className="sr-only">{`${label}: ${value}`}</span>
+            </Link>
         </Tooltip>
     )
 }
@@ -126,7 +119,6 @@ function Bar({
                         label={key}
                         target={target}
                         total={total}
-                        type="regular"
                         value={value}
                     />
                 )
@@ -140,7 +132,6 @@ function Bar({
                     label={restDistribution[0].key}
                     target={target}
                     total={total}
-                    type="regular"
                     value={restDistribution[0].value}
                 />
             ) : null}
@@ -152,7 +143,6 @@ function Bar({
                     label={`${restDistribution.length} others...`}
                     target={target}
                     total={total}
-                    type="other"
                     value={totalRestValue}
                 />
             ) : null}
