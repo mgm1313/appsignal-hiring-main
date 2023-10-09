@@ -192,36 +192,24 @@ export default function MetadataDistributions({
     distributions: DataFromApi['app']
 }) {
     return (
-        <>
-            <div className="max-w-sm mx-auto">
-                <div className="rounded border border-gray-300 bg-white divide-y divide-gray-300">
-                    <div className="flex justify-between text-sm items-center px-6 py-4">
-                        <h2 className="font-semibold">
-                            Metadata distributions
-                        </h2>
-                        <Link
-                            href="#"
-                            className="text-blue-600 hover:text-blue-900 underline"
-                        >
-                            All attributes
-                        </Link>
-                    </div>
-
-                    {distributions.metadataDistributions.map(
-                        (distribution, index) => (
-                            <MetadataDistribution
-                                key={distribution.name}
-                                index={index}
-                                distribution={distribution}
-                            />
-                        )
-                    )}
-                </div>
+        <div className="rounded border border-gray-300 bg-white divide-y divide-gray-300">
+            <div className="flex justify-between text-sm items-center px-6 py-4">
+                <h2 className="font-semibold">Metadata distributions</h2>
+                <Link
+                    href="#"
+                    className="text-blue-600 hover:text-blue-900 underline"
+                >
+                    All attributes
+                </Link>
             </div>
 
-            <pre className="mt-12 text-xs">
-                {JSON.stringify(distributions, null, 2)}
-            </pre>
-        </>
+            {distributions.metadataDistributions.map((distribution, index) => (
+                <MetadataDistribution
+                    key={distribution.name}
+                    index={index}
+                    distribution={distribution}
+                />
+            ))}
+        </div>
     )
 }
