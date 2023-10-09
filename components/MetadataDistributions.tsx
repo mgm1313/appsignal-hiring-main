@@ -2,45 +2,7 @@ import Tooltip, { useSingleton } from '@/components/Tooltip'
 import Link from 'next/link'
 import { DataFromApi } from 'types/data'
 import clsx from 'clsx'
-
-const colors = [
-    {
-        0: 'bg-green-950',
-        1: 'bg-green-900',
-        2: 'bg-green-800',
-        3: 'bg-green-700',
-        4: 'bg-green-600',
-        5: 'bg-green-500',
-        6: 'bg-green-400',
-        7: 'bg-green-300',
-        8: 'bg-green-200',
-        9: 'bg-green-100',
-    },
-    {
-        0: 'bg-blue-950',
-        1: 'bg-blue-900',
-        2: 'bg-blue-800',
-        3: 'bg-blue-700',
-        4: 'bg-blue-600',
-        5: 'bg-blue-500',
-        6: 'bg-blue-400',
-        7: 'bg-blue-300',
-        8: 'bg-blue-200',
-        9: 'bg-blue-100',
-    },
-    {
-        0: 'bg-red-950',
-        1: 'bg-red-900',
-        2: 'bg-red-800',
-        3: 'bg-red-700',
-        4: 'bg-red-600',
-        5: 'bg-red-500',
-        6: 'bg-red-400',
-        7: 'bg-red-300',
-        8: 'bg-red-200',
-        9: 'bg-red-100',
-    },
-]
+import { colors } from 'utils/colors'
 
 function BarSegment({
     className,
@@ -106,7 +68,12 @@ function Bar({
     const [source, target] = useSingleton()
 
     return (
-        <div className="flex rounded-full overflow-hidden h-2 w-full gap-x-px">
+        <div
+            className="flex rounded-full overflow-hidden h-2 w-full gap-x-px"
+            style={{
+                ['--total-distribution-width' as string]: total,
+            }}
+        >
             {/* We first iterate over the regular bar parts */}
             {visibleDistributions.map(({ key, value }, index) => {
                 // @ts-expect-error - We know that the index is always a number between 0 and 8
@@ -159,12 +126,7 @@ function MetadataDistribution({
     distribution: DataFromApi['app']['metadataDistributions'][number]
 }) {
     return (
-        <div
-            style={{
-                ['--total-distribution-width' as string]: distribution.total,
-            }}
-            className={`px-6 pt-3.5 pb-4 flex flex-col gap-y-3`}
-        >
+        <div className={`px-6 pt-3.5 pb-4 flex flex-col gap-y-3`}>
             <h2 className="text-sm capitalize leading-none">{`${distribution.name} (${distribution.unique})`}</h2>
             <Bar
                 index={index}
