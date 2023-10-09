@@ -75,7 +75,7 @@ function BarSegment({
                     }}
                     className={clsx(
                         className,
-                        'h-full w-[calc(100%*(var(--segment-value)/var(--total-distribution-width)))]'
+                        'h-full flex-none w-[calc(100%*(var(--segment-value)/var(--total-distribution-width)))]'
                     )}
                 >
                     <span className="sr-only">{`${label}: ${value}`}</span>
