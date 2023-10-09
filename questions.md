@@ -1,0 +1,3 @@
+-   What does the 'unique' represent? I believe the percentages are wrong now.
+-   Should the width be fixed, or is is fluid and up to the parent container?
+-   Should I sort the distributions by count?
